@@ -1,2 +1,2 @@
 [all]
-3.236.163.109
+ec2-3-236-163-109.compute-1.amazonaws.com
