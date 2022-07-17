@@ -1,2 +1,2 @@
 [all]
-ec2-54-82-247-63.compute-1.amazonaws.com
+3.236.163.109

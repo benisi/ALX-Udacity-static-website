@@ -31,8 +31,8 @@ jobs:
 workflows:
   provision:
     jobs:
-      - create_infrastructure:
-          name: create_infrastructure
+      # - create_infrastructure:
+      #     name: create_infrastructure
       - configure_infrastructure:
           name: configure_infrastructure
-          requires: ['create_infrastructure']
+          # requires: ['create_infrastructure']
