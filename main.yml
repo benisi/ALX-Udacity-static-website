@@ -6,7 +6,6 @@
    user: ubuntu
    become: true
    become_method: sudo
-   autoremove: yes
    become_user: root
    roles:
     - setup
