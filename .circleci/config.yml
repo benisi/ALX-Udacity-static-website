@@ -36,3 +36,4 @@ workflows:
       - configure_infrastructure:
           name: configure_infrastructure
           # requires: ['create_infrastructure']
+          
