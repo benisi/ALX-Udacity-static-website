@@ -31,5 +31,7 @@ jobs:
 workflows:
   provision:
     jobs:
+      - create_infrastructure:
+          name: create_infrastructure
       - configure_infrastructure:
           name: configure_infrastructure
