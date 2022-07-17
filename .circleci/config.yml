@@ -25,13 +25,9 @@ jobs:
             command: |
               apk add --update ansible
         - run:
-            name: Install dependencies (openssh)
-            command: |
-              apk add --update openssh-server 
-        - run:
             name: Run Playbook and Configure server
             command: |
-              ansible-playbook main.yml -i inventory.txt
+              ansible-playbook -u ubuntu -i inventory.txt main.yml
 workflows:
   provision:
     jobs:
