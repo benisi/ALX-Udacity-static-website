@@ -48,6 +48,7 @@ jobs:
               command: |
                return 1
           - destroy_environment
+            when: on_fail
 workflows:
   provision:
     jobs:
