@@ -32,13 +32,13 @@
 
 - name: Creates directory
   file:
-    path: ~/web
+    path: /home/ubuntu/web
     state: directory
 
 - name: Copy index test page
   copy:
-    src: "files/index.js"
-    dest: "~/web/index.js"
+    src: "/root/project/roles/setup/files/index.js"
+    dest: "/home/ubuntu/web/index.js"
     force: yes
 
 - name: Executing node
