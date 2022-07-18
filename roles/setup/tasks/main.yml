@@ -36,9 +36,10 @@
     state: directory
 
 - name: Copy index test page
-  template:
+  copy:
     src: "files/index.js"
     dest: "~/web/index.js"
+    force: yes
 
 - name: Executing node
   shell: |
