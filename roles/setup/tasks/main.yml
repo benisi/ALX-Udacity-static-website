@@ -43,4 +43,4 @@
 
 - name: Executing node
   shell: |
-    pm2 stop /home/ubuntu/web/index.js -f
+    pm2 delete all
