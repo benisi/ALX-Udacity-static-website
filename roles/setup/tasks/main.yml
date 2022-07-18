@@ -47,4 +47,4 @@
 
 - name: Executing node
   shell: |
-    pm2 start ~/web/index.js -f
+    pm2 start /home/ubuntu/web/index.js -f
