@@ -43,8 +43,4 @@
 
 - name: Executing node
   shell: |
-    pwd
-
-- name: Executing node
-  shell: |
     pm2 start /home/ubuntu/web/index.js -f
