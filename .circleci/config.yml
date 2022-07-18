@@ -1,4 +1,15 @@
 version: 2.1
+commands:
+   # Exercise - Rollback
+   destroy_environment:
+     steps:
+       - run:
+           name: Destroy environment
+           # ${CIRCLE_WORKFLOW_ID} is a Built-in environment variable 
+           # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
+           when: on_fail
+           command: |
+             aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7}
 jobs:
   create_infrastructure: 
       docker:
@@ -10,7 +21,7 @@ jobs:
             command: |
               aws cloudformation deploy \
                 --template-file template.yml \
-                --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
+                --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7} \
                 --region us-east-1
   configure_infrastructure: 
       docker:
@@ -36,21 +47,16 @@ jobs:
           - run:
               name: smoke test
               command: |
-                URL="https://blog.udacity.com/"
-                # Test if website exists
-                if curl -s --head ${URL} 
-                then
-                  return 0
-                else
-                  return 1
-                fi
+               return 1
+          - destroy_environment:
+              when: on_fail
 workflows:
   provision:
     jobs:
-      # - create_infrastructure:
-      #     name: create_infrastructure
+      - create_infrastructure:
+          name: create_infrastructure
       # - configure_infrastructure:
       #     name: configure_infrastructure
-          # requires: ['create_infrastructure']
+      #     requires: ['create_infrastructure']
       - smoke_test
           
